@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp0001"
         mc:Ignorable="d"
-        Title="DSWPFApp0001" Height="450" Width="800">
-    <Grid>
+        Title="DSWPFApp0001" Height="466" Width="800">
+    <Grid Margin="0,0,0,0" Height="450" VerticalAlignment="Bottom">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="209*"/>
+            <RowDefinition Height="225*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Start/Stop" Name="StartStopButton" HorizontalAlignment="Left" Margin="65,65,0,0" VerticalAlignment="Top" Click="StartStopButton_Click"/>
+        <Label Content="0 Clicks" Name="SpielstandLabel" HorizontalAlignment="Left" Margin="65,109,0,0" VerticalAlignment="Top" Width="57"/>
+        <Canvas Name="Spielplatz" HorizontalAlignment="Left" Width="600" Margin="200,0,0,0" Background="#F9F2E7" Grid.RowSpan="2">
+            <Ellipse Name ="Ball" Height="30" Canvas.Left="285" Stroke="Black" Canvas.Top="220" Width="30">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="#FF99C7D1"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
+        </Canvas>
 
     </Grid>
 </Window>
