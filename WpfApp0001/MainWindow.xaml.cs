@@ -23,6 +23,7 @@ namespace WpfApp0001
     {
         private readonly DispatcherTimer _animationsTimer = new DispatcherTimer();
         private bool gehtNachRechts = true;
+        private bool gehtNachUnten = true;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace WpfApp0001
         {
             //throw new NotImplementedException();
             var x = Canvas.GetLeft(Ball);
+            var y = Canvas.GetTop(Ball);
             if ((x+Ball.ActualWidth)>=Spielplatz.ActualWidth)
             {
                 gehtNachRechts = false;
@@ -49,6 +51,22 @@ namespace WpfApp0001
             else
             {
                 Canvas.SetLeft(Ball, x - 5);
+            }
+            if ((y + Ball.ActualHeight) >= Spielplatz.ActualHeight)
+            {
+                gehtNachUnten = false;
+            }
+            else if ((y - 0) <= Spielplatz.MinHeight)
+            {
+                gehtNachUnten = true;
+            }
+            if (gehtNachUnten)
+            {
+                Canvas.SetTop(Ball, y + 5);
+            }
+            else
+            {
+                Canvas.SetTop(Ball, y - 5);
             }
         }
 
