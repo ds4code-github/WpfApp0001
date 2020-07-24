@@ -27,7 +27,7 @@ namespace WpfApp0001
         public MainWindow()
         {
             InitializeComponent();
-            _animationsTimer.Interval = TimeSpan.FromMilliseconds(50);
+            _animationsTimer.Interval = TimeSpan.FromMilliseconds(20);
             _animationsTimer.Tick += PositioniereBall;
         }
 
@@ -36,11 +36,11 @@ namespace WpfApp0001
             //throw new NotImplementedException();
             var x = Canvas.GetLeft(Ball);
             var y = Canvas.GetTop(Ball);
-            if ((x+Ball.ActualWidth)>=Spielplatz.ActualWidth)
+            if ((x + Ball.ActualWidth) >= Spielplatz.ActualWidth)
             {
                 gehtNachRechts = false;
-            } 
-            else if ((x-0)<=0+Spielplatz.MinWidth-Spielplatz.MinWidth)
+            }
+            else if ((x - 0) <= 0 + Spielplatz.MinWidth - Spielplatz.MinWidth)
             {
                 gehtNachRechts = true;
             }
@@ -56,7 +56,7 @@ namespace WpfApp0001
             {
                 gehtNachUnten = false;
             }
-            else if ((y - 0) <= 0+Spielplatz.MinHeight-Spielplatz.MinHeight)
+            else if ((y - 0) <= 0 + Spielplatz.MinHeight - Spielplatz.MinHeight)
             {
                 gehtNachUnten = true;
             }
@@ -72,20 +72,28 @@ namespace WpfApp0001
 
         private void StartStopButton_Click(object sender, RoutedEventArgs e)
         {
+            Random random = new Random();
             if (_animationsTimer.IsEnabled)
             {
                 _animationsTimer.Stop();
-            } 
+            }
             else
             {
                 _animationsTimer.Start();
-            }
-            
-            var mitteX = Spielplatz.ActualWidth / 2 - 15;
-            var mitteY = Spielplatz.ActualHeight / 2 - 15;
+                var rndWidth = Convert.ToInt32(Spielplatz.ActualWidth - Ball.ActualWidth);
+                var rndHeight = Convert.ToInt32(Spielplatz.ActualHeight - Ball.ActualHeight);
+                var randomX = random.Next(0, rndWidth);
+                var randomY = random.Next(0, rndHeight);
 
-            Canvas.SetLeft(Ball, mitteX);
-            Canvas.SetTop(Ball, mitteY);
+                Canvas.SetLeft(Ball, randomX);
+                Canvas.SetTop(Ball, randomY);
+            }
+
+            //var mitteX = Spielplatz.ActualWidth / 2 - 15;
+            //var mitteY = Spielplatz.ActualHeight / 2 - 15;
+
+            //Canvas.SetLeft(Ball, mitteX);
+            //Canvas.SetTop(Ball, mitteY);
         }
     }
 }
