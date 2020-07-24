@@ -22,10 +22,11 @@ namespace WpfApp0001
     public partial class MainWindow : Window
     {
         private readonly DispatcherTimer _animationsTimer = new DispatcherTimer();
+        private bool gehtNachRechts = true;
         public MainWindow()
         {
             InitializeComponent();
-            _animationsTimer.Interval = TimeSpan.FromMilliseconds(500);
+            _animationsTimer.Interval = TimeSpan.FromMilliseconds(50);
             _animationsTimer.Tick += PositioniereBall;
         }
 
@@ -33,7 +34,22 @@ namespace WpfApp0001
         {
             //throw new NotImplementedException();
             var x = Canvas.GetLeft(Ball);
-            Canvas.SetLeft(Ball, x + 5);
+            if ((x+Ball.ActualWidth)>=Spielplatz.ActualWidth)
+            {
+                gehtNachRechts = false;
+            } 
+            else if ((x-0)<=Spielplatz.MinWidth)
+            {
+                gehtNachRechts = true;
+            }
+            if (gehtNachRechts)
+            {
+                Canvas.SetLeft(Ball, x + 5);
+            }
+            else
+            {
+                Canvas.SetLeft(Ball, x - 5);
+            }
         }
 
         private void StartStopButton_Click(object sender, RoutedEventArgs e)
