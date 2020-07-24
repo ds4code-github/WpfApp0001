@@ -40,7 +40,7 @@ namespace WpfApp0001
             {
                 gehtNachRechts = false;
             } 
-            else if ((x-0)<=Spielplatz.MinWidth)
+            else if ((x-0)<=0+Spielplatz.MinWidth-Spielplatz.MinWidth)
             {
                 gehtNachRechts = true;
             }
@@ -56,7 +56,7 @@ namespace WpfApp0001
             {
                 gehtNachUnten = false;
             }
-            else if ((y - 0) <= Spielplatz.MinHeight)
+            else if ((y - 0) <= 0+Spielplatz.MinHeight-Spielplatz.MinHeight)
             {
                 gehtNachUnten = true;
             }
